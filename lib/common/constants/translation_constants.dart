@@ -1,5 +1,3 @@
-
-  
 class TranslationConstants {
   TranslationConstants._();
 
@@ -16,4 +14,18 @@ class TranslationConstants {
   static const String now = 'now';
   static const String soon = 'soon';
   static const String noMovies = 'noMovies';
+  static const String cast = 'cast';
+  static const String watchTrailers = 'watchTrailers';
+  static const String noMoviesSearched = 'noMoviesSearched';
+  static const String noFavoriteMovie = 'noFavoriteMovie';
+  static const String username = 'username';
+  static const String password = 'password';
+  static const String loginToMovieApp = 'loginToMovieApp';
+  static const String signIn = 'signIn';
+  static const String wrongUsernamePassword = 'wrongUsernamePassword';
+  static const String noNetwork = 'noNetwork';
+  static const String logout = 'logout';
+  static const String sessionDenied = 'sessionDenied';
+  static const String enterTMDbUsername = 'enterTMDbUsername';
+  static const String enterPassword = 'enterPassword';
 }

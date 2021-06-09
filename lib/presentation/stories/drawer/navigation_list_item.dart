@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:popcorn/common/constants/size_constants.dart';
 import 'package:popcorn/common/extensions/size_extension.dart';
-
 class NavigationListItem extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final Function() onPressed;
 
   const NavigationListItem({
-    Key key,
-    @required this.title,
-    @required this.onPressed,
+    Key? key,
+    required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -38,12 +37,12 @@ class NavigationListItem extends StatelessWidget {
 
 class NavigationSubListItem extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final Function() onPressed;
 
   const NavigationSubListItem({
-    Key key,
-    @required this.title,
-    @required this.onPressed,
+    Key? key,
+    required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

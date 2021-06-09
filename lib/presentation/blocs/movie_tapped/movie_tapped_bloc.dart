@@ -19,14 +19,20 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
   final GetCommingSoon getCommingSoon;
   final GetPlayingNow getPlayingNow;
 
-  MovieTappedBloc({this.getPopular, this.getCommingSoon, this.getPlayingNow}) : super(MovieTappedInitial());
+  MovieTappedBloc({
+     required this.getPopular,
+    required this.getCommingSoon,
+    required this.getPlayingNow
+     }) : super(MovieTappedInitial());
 
   @override
   Stream<MovieTappedState> mapEventToState(
     MovieTappedEvent event,
   ) async* {
    if(event is MovieTappedChangedEvent){
-     Either<AppError,List<MovieEntity>>moviesOrError;
+     yield MovieTappedLoading();
+   await Future.delayed(Duration(milliseconds: 2000));
+   late  Either<AppError,List<MovieEntity>>moviesOrError;
      switch(event.currentTappedIndex){
        case 0:
        moviesOrError=await getPopular(NoParams());
@@ -38,6 +44,7 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
        moviesOrError=await getPlayingNow(NoParams());
        break;
      }
+     
      yield moviesOrError.fold(
           (l) => MovieTabLoadError(
           currentTabIndex: event.currentTappedIndex,

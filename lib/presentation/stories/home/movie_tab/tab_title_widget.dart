@@ -8,12 +8,12 @@ import 'package:popcorn/common/extensions/string_extension.dart';
 
 class TabTitleWidget extends StatelessWidget {
   final String title;
-  final Function onTab;
+  final Function() onTab;
   final bool isSellected;
 
-  const TabTitleWidget({Key key,
-  @required  this.title,
-  @required  this.onTab,
+  const TabTitleWidget({Key? key,
+  required  this.title,
+  required  this.onTab,
    this.isSellected=false}) :
    assert(title !=null,'title should not be null'),
    assert(onTab !=null,'onTab should not be null'),

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popcorn/common/constants/size_constants.dart';
-import 'package:popcorn/common/constants/translation_constants.dart';
+
 import 'package:popcorn/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:popcorn/presentation/stories/home/movie_tab/movie_listview_biulder.dart';
 import 'package:popcorn/presentation/stories/home/movie_tab/movie_tabs_constant.dart';
 import 'package:popcorn/presentation/stories/home/movie_tab/tab_title_widget.dart';
 import 'package:popcorn/common/extensions/size_extension.dart';
+import 'package:popcorn/presentation/stories/loading/loading_widget.dart';
 import 'package:popcorn/presentation/widgets/app_error_widget.dart';
-import 'package:popcorn/common/extensions/string_extension.dart';
+
 
 class MovieTabsWidget extends StatefulWidget {
   @override
@@ -52,9 +53,7 @@ class _MovieTabsWidgetState extends State<MovieTabsWidget> with SingleTickerProv
                 ],
               ),
               if (state is MovieTappedChanged)
-              state.movies?.isEmpty ?? true?  Expanded(
-                  child: Center(child:Text(TranslationConstants.noMovies.t(context))),
-                ):Expanded(
+          Expanded(
                   child: MovieListView(movies: state.movies)
                 ),
                 if(state is MovieTabLoadError)
@@ -68,6 +67,8 @@ class _MovieTabsWidgetState extends State<MovieTabsWidget> with SingleTickerProv
                     ),
                   ),
                 ),
+                if(state is MovieTappedLoading)
+                LoadingWidget(size: Sizes.dimen_150.w)
             ],
           ),
         );

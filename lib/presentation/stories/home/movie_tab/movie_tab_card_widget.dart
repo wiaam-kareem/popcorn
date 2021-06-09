@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:popcorn/common/constants/route_constants.dart';
 import 'package:popcorn/common/constants/size_constants.dart';
 import 'package:popcorn/common/extensions/size_extension.dart';
 import 'package:popcorn/common/extensions/string_extension.dart';
@@ -12,10 +13,10 @@ class MovieTabCard extends StatelessWidget {
   final String title;
   final  String  posterPath;
 
-  const MovieTabCard({Key key,
-  @required  this.movieId,
-  @required  this.title,
-  @required  this.posterPath}) :
+  const MovieTabCard({Key? key,
+  required  this.movieId,
+  required  this.title,
+  required  this.posterPath}) :
   assert(movieId !=null,'movieId shouldnt be null'),
   assert(title !=null,'title shouldnt be null'),
   assert(posterPath !=null,'posterpath shouldnt be null'),
@@ -26,9 +27,7 @@ class MovieTabCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => MovieDetailScreen(
-                  movieDetailArguments: MovieDetailArguments(movieId))));
+            Navigator.of(context).pushNamed(RouteList.movieDetail,arguments: MovieDetailArguments(movieId));
       },
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

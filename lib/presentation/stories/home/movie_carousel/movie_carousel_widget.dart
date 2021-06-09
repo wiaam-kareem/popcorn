@@ -10,7 +10,7 @@ class MovieCarouselWidget extends StatelessWidget {
   final List<MovieEntity>movies;
   final int defaultIndex;
 
-  const MovieCarouselWidget({Key key, this.movies, this.defaultIndex}) :
+  const MovieCarouselWidget({Key? key, required this.movies, required this.defaultIndex}) :
   assert(defaultIndex >0,'defaultIndex should be greater than 0'),
    super(key: key);
   

@@ -13,9 +13,9 @@ class MoviePageView extends StatefulWidget {
   final int initialPage;
 
   const MoviePageView({
-    Key key,
-    @required this.movies,
-    @required this.initialPage,
+    Key? key,
+    required this.movies,
+    required this.initialPage,
   })  : assert(initialPage >= 0, 'initialPage cannot be less than 0'),
         super(key: key);
 
@@ -24,7 +24,7 @@ class MoviePageView extends StatefulWidget {
 }
 
 class _MoviePageViewState extends State<MoviePageView> {
-  PageController _pageController;
+ late  PageController _pageController;
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _MoviePageViewState extends State<MoviePageView> {
           );
         },
         pageSnapping: true,
-        itemCount: widget.movies?.length ?? 0,
+        itemCount: widget.movies.length ,
         onPageChanged: (index) {
            BlocProvider.of<CarouselBackdropBloc>(context)
               .add(CarouselBackdropChangedEvent(widget.movies[index]));

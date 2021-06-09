@@ -17,9 +17,9 @@ class AppErrorWidget extends StatelessWidget {
   final Function onPressed;
 
   const AppErrorWidget({
-    Key key,
-    @required this.errorType,
-    @required this.onPressed,
+    Key? key,
+    required this.errorType,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -46,7 +46,7 @@ class AppErrorWidget extends StatelessWidget {
                   children: [
                     //4
                     Button(
-                      onPressed: onPressed,
+                      onPressed:()=> onPressed,
                       text: TranslationConstants.retry,
                     ),
                     //5

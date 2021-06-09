@@ -7,19 +7,20 @@ abstract class MovieCarouselState extends Equatable {
 }
 
 class MovieCarouselInitial extends MovieCarouselState {}
+class MovieCarouselLoading extends MovieCarouselState {}
 
 class MovieCarouselError extends MovieCarouselState {
     final AppErrorType errorType;
 
-  const MovieCarouselError(this.errorType);}
+  const MovieCarouselError(  this.errorType);}
 
 class MovieCarouselLoaded extends MovieCarouselState {
   final List<MovieEntity> movies;
   final int defaultIndex;
 
   const MovieCarouselLoaded({
-    this.movies,
-    this.defaultIndex = 0,
+   required  this.movies,
+     this.defaultIndex = 0,
   }) : assert(defaultIndex >= 0, 'defaultIndex cannot be less than 0');
 
   @override

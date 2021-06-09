@@ -10,6 +10,7 @@ import 'package:popcorn/domain/entities/movie_entity.dart';
 import 'package:popcorn/domain/entities/no_params.dart';
 import 'package:popcorn/domain/usecases/get_trending.dart';
 import 'package:popcorn/presentation/blocs/carousel_backdrop/carousel_backdrop_bloc.dart';
+import 'package:popcorn/presentation/blocs/loading/loading_bloc.dart';
 
 part 'movie_carousel_event.dart';
 part 'movie_carousel_state.dart';
@@ -17,7 +18,8 @@ part 'movie_carousel_state.dart';
 class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
   final GetTrending getTrending;
   final CarouselBackdropBloc carouselBackdropBloc;
-  MovieCarouselBloc({ @required this.getTrending,@required this.carouselBackdropBloc}
+//  final LoadingBloc loadingBloc;
+  MovieCarouselBloc({  required this.getTrending,required this.carouselBackdropBloc}
    
   ) : super(MovieCarouselInitial());
 
@@ -26,6 +28,8 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
     MovieCarouselEvent event,
   ) async* {
     if(event is CarouselLoadEvent){
+     yield MovieCarouselLoading();
+    // await Future.delayed(Duration(milliseconds: 5000));
       final movieEither= await getTrending(NoParams());
      yield movieEither.fold(
        
@@ -37,5 +41,6 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
          return  MovieCarouselLoaded(movies: moviesList,defaultIndex: event.defaultIndex );
        });
     }
+
   }
 }
