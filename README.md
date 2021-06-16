@@ -1,16 +1,23 @@
 # popcorn
 
-A new Flutter project.
+flutter movies app with tmdp api ,build in clean architecture and Domain-Driven-Design,
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## build with
 
-A few resources to get you started if this is your first Flutter project:
+* state management(with Bloc)
+* clean architecture and SOLID principles
+* handling errors
+* localization 
+* local data storage (with hive)
+* dependency injection (using get-it)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## App features 
+* present movies categories 
+* shows detail screen(containing movie details ,cast and watch trailer)
+* persist fevorite movie in local data-base and implement favorite movies screen
+* localization with two languages(English and Arabic)
+* login and logout functionality
+* search for movie screen
+* theme (Dark mode,light mode)
